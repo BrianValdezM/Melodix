@@ -25,9 +25,9 @@ public class SecurityConfig {
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/h2-console/**").permitAll()
-                .anyRequest().authenticated()
-            )
+            	    .requestMatchers("/api/auth/**", "/h2-console/**", "/api/songs/*/stream").permitAll()
+            	    .anyRequest().authenticated()
+             )
             .headers(headers -> headers.frameOptions(frame -> frame.disable()))
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
