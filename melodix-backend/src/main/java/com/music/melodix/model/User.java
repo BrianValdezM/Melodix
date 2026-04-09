@@ -28,6 +28,10 @@ public class User {
     private String password;
 
     private String avatarUrl;
+    
+    private String address;
+    
+    private String phone;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 

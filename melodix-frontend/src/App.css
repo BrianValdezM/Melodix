@@ -182,3 +182,100 @@ body { font-family: 'Segoe UI', sans-serif; background: #121212; color: #fff; }
     font-weight: bold;
     cursor: pointer;
 }
+
+/* Profile Menu */
+.profile-menu-wrapper { position: relative; }
+
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    margin-bottom: 10px;
+}
+.profile-trigger:hover { background: #1a1a1a; }
+
+.avatar-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.avatar-placeholder {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #1db954; color: #000;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 16px;
+}
+.profile-name { flex: 1; font-size: 14px; color: #fff; }
+.profile-arrow { font-size: 10px; color: #aaa; }
+
+.profile-dropdown {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 300px;
+    background: #282828;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    padding: 20px;
+    z-index: 200;
+}
+
+.profile-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+
+.avatar-container { position: relative; cursor: pointer; }
+.avatar-large { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+.avatar-large-placeholder {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #1db954; color: #000;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 24px;
+}
+.avatar-overlay {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.2s; font-size: 18px;
+}
+.avatar-container:hover .avatar-overlay { opacity: 1; }
+
+.profile-username { font-weight: bold; font-size: 15px; }
+.profile-email { color: #aaa; font-size: 12px; }
+.profile-divider { height: 1px; background: #333; margin: 10px 0; }
+
+.profile-field { display: flex; flex-direction: column; margin-bottom: 12px; }
+.field-label { color: #aaa; font-size: 11px; margin-bottom: 3px; }
+.field-value { font-size: 13px; color: #fff; }
+.field-badge {
+    display: inline-block; background: #1db95430;
+    color: #1db954; padding: 2px 8px;
+    border-radius: 10px; font-size: 12px;
+}
+
+.edit-btn {
+    width: 100%; padding: 8px;
+    background: #1db954; border: none;
+    border-radius: 8px; color: #000;
+    font-weight: bold; cursor: pointer;
+    margin-top: 5px;
+}
+.edit-btn:hover { background: #1ed760; }
+
+.profile-form { display: flex; flex-direction: column; gap: 8px; }
+.profile-form label { color: #aaa; font-size: 11px; }
+.profile-form input {
+    padding: 8px; background: #1a1a1a;
+    border: 1px solid #333; border-radius: 6px;
+    color: #fff; font-size: 13px;
+}
+.form-actions { display: flex; gap: 8px; margin-top: 5px; }
+.cancel-btn {
+    flex: 1; padding: 8px; background: transparent;
+    border: 1px solid #555; border-radius: 8px;
+    color: #aaa; cursor: pointer;
+}
+.save-btn {
+    flex: 1; padding: 8px; background: #1db954;
+    border: none; border-radius: 8px;
+    color: #000; font-weight: bold; cursor: pointer;
+}
+.saved-msg { color: #1db954; font-size: 12px; text-align: center; }

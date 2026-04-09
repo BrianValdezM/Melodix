@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { removeToken } from '../services/authService';
+import ProfileMenu from './ProfileMenu';
 
 export default function Sidebar() {
     const navigate = useNavigate();
@@ -14,13 +15,17 @@ export default function Sidebar() {
     return (
         <div className="sidebar">
             <h1 className="logo">🎵 Melodix</h1>
-            <p className="sidebar-user">Hola, {username}</p>
             <nav>
                 <Link to="/">🏠 Inicio</Link>
                 <Link to="/favorites">❤️ Favoritos</Link>
                 <Link to="/playlists">📂 Playlists</Link>
             </nav>
-            <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
+            <div style={{ marginTop: 'auto' }}>
+                <ProfileMenu />
+                <button className="logout-btn" onClick={handleLogout}>
+                    Cerrar sesión
+                </button>
+            </div>
         </div>
     );
 }
