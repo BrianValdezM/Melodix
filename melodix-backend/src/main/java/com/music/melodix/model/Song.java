@@ -22,16 +22,20 @@ public class Song {
     private String artist;
 
     private String album;
-
     private String genre;
+    private Integer duration;
+    private String filePath;
+    private String coverUrl;
+    private Long plays = 0L;
 
-    private Integer duration; // en segundos
+    @Enumerated(EnumType.STRING)
+    private SongStatus status = SongStatus.PENDING;
 
-    private String filePath; // ruta del archivo MP3
+    private String rejectionReason;
 
-    private String coverUrl; // imagen del álbum
-
-    private Long plays = 0L; // contador de reproducciones
+    @ManyToOne
+    @JoinColumn(name = "uploaded_by")
+    private User uploadedBy;
 
     private LocalDateTime uploadedAt = LocalDateTime.now();
 
@@ -40,4 +44,6 @@ public class Song {
 
     @OneToMany(mappedBy = "song", cascade = CascadeType.ALL)
     private List<Favorite> favorites;
+
+    public enum SongStatus { PENDING, APPROVED, REJECTED }
 }

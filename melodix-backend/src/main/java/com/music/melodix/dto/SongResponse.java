@@ -13,6 +13,9 @@ public class SongResponse {
     private Integer duration;
     private String coverUrl;
     private Long plays;
+    private String status;
+    private String rejectionReason;
+    private String uploadedBy;
     private LocalDateTime uploadedAt;
     private String streamUrl;
 }

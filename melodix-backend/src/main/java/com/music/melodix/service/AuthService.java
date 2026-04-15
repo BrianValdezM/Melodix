@@ -47,4 +47,15 @@ public class AuthService {
         String token = jwtUtil.generateToken(user.getEmail());
         return new AuthResponse(token, user.getUsername(), user.getEmail());
     }
+    
+    public AuthResponse registerAdmin(RegisterRequest request) {
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(User.Role.ADMIN);
+        userRepository.save(user);
+        String token = jwtUtil.generateToken(user.getEmail());
+        return new AuthResponse(token, user.getUsername(), user.getEmail());
+    }
 }

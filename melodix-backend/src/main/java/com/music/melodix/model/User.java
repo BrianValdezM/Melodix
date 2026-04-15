@@ -28,10 +28,11 @@ public class User {
     private String password;
 
     private String avatarUrl;
-    
     private String address;
-    
     private String phone;
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -40,4 +41,6 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Favorite> favorites;
+
+    public enum Role { USER, ARTIST, ADMIN }
 }
