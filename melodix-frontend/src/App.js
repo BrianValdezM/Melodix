@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { PlayerProvider } from './context/PlayerContext';
-import { isAuthenticated } from './services/authService';
+import { isAuthenticated, isAdmin } from './services/authService';
 import Sidebar from './components/Sidebar';
 import Player from './components/Player';
 import Home from './pages/Home';
@@ -8,10 +8,16 @@ import Favorites from './pages/Favorites';
 import Playlists from './pages/Playlists';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ArtistDashboard from './pages/ArtistDashboard';
+import Admin from './pages/Admin';
 import './App.css';
 
 function PrivateRoute({ children }) {
     return isAuthenticated() ? children : <Navigate to="/login" />;
+}
+
+function AdminRoute({ children }) {
+    return isAuthenticated() && isAdmin() ? children : <Navigate to="/" />;
 }
 
 function Layout({ children }) {
@@ -34,19 +40,19 @@ export default function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/" element={
-                        <PrivateRoute>
-                            <Layout><Home /></Layout>
-                        </PrivateRoute>
+                        <PrivateRoute><Layout><Home /></Layout></PrivateRoute>
                     } />
                     <Route path="/favorites" element={
-                        <PrivateRoute>
-                            <Layout><Favorites /></Layout>
-                        </PrivateRoute>
+                        <PrivateRoute><Layout><Favorites /></Layout></PrivateRoute>
                     } />
                     <Route path="/playlists" element={
-                        <PrivateRoute>
-                            <Layout><Playlists /></Layout>
-                        </PrivateRoute>
+                        <PrivateRoute><Layout><Playlists /></Layout></PrivateRoute>
+                    } />
+                    <Route path="/artist" element={
+                        <PrivateRoute><Layout><ArtistDashboard /></Layout></PrivateRoute>
+                    } />
+                    <Route path="/admin" element={
+                        <AdminRoute><Layout><Admin /></Layout></AdminRoute>
                     } />
                 </Routes>
             </BrowserRouter>

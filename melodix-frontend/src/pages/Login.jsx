@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { login, setToken } from '../services/authService';
+import { login, setToken, setRole } from '../services/authService';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function Login() {
@@ -12,6 +12,7 @@ export default function Login() {
         try {
             const res = await login(form);
             setToken(res.data.token);
+            setRole(res.data.role);
             localStorage.setItem('username', res.data.username);
             navigate('/');
         } catch {
@@ -23,14 +24,14 @@ export default function Login() {
         <div className="auth-container">
             <div className="auth-box">
                 <h1>🎵 Melodix</h1>
-                <h2>Iniciar sesión</h2>
+                <h2>Iniciar sesion</h2>
                 {error && <p className="error">{error}</p>}
                 <input placeholder="Email" type="email"
                     value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-                <input placeholder="Contraseña" type="password"
+                <input placeholder="Contrasena" type="password"
                     value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
                 <button onClick={handleSubmit}>Entrar</button>
-                <p>¿No tienes cuenta? <Link to="/register">Regístrate</Link></p>
+                <p>No tienes cuenta? <Link to="/register">Registrate</Link></p>
             </div>
         </div>
     );

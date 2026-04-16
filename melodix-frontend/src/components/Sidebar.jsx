@@ -1,14 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { removeToken } from '../services/authService';
+import { removeToken, isAdmin } from '../services/authService';
 import ProfileMenu from './ProfileMenu';
 
 export default function Sidebar() {
     const navigate = useNavigate();
-    const username = localStorage.getItem('username');
 
     const handleLogout = () => {
         removeToken();
         localStorage.removeItem('username');
+        localStorage.removeItem('role');
         navigate('/login');
     };
 
@@ -19,11 +19,13 @@ export default function Sidebar() {
                 <Link to="/">🏠 Inicio</Link>
                 <Link to="/favorites">❤️ Favoritos</Link>
                 <Link to="/playlists">📂 Playlists</Link>
+                <Link to="/artist">🎤 Mi espacio artista</Link>
+                {isAdmin() && <Link to="/admin">🛡️ Administracion</Link>}
             </nav>
             <div style={{ marginTop: 'auto' }}>
                 <ProfileMenu />
                 <button className="logout-btn" onClick={handleLogout}>
-                    Cerrar sesión
+                    Cerrar sesion
                 </button>
             </div>
         </div>
