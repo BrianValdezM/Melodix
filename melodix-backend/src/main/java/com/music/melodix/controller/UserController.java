@@ -87,6 +87,7 @@ public class UserController {
         r.setAvatarUrl(user.getAvatarUrl());
         r.setAddress(user.getAddress());
         r.setPhone(user.getPhone());
+        r.setRole(user.getRole().name()); 
         return r;
     }
 }

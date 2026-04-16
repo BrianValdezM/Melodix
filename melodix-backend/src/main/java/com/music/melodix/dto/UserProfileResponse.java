@@ -10,4 +10,5 @@ public class UserProfileResponse {
     private String avatarUrl;
     private String address;
     private String phone;
+    private String role;  
 }
