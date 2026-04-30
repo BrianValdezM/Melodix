@@ -43,4 +43,12 @@ public class User {
     private List<Favorite> favorites;
 
     public enum Role { USER, ARTIST, ADMIN }
+    
+    @Enumerated(EnumType.STRING)
+    private MembershipPlan membershipPlan = MembershipPlan.FREE;
+
+    private LocalDateTime membershipStart;
+    private LocalDateTime membershipEnd;
+
+    public enum MembershipPlan { FREE, PREMIUM_MONTHLY, PREMIUM_ANNUAL }
 }
