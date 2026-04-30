@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ArtistDashboard from './pages/ArtistDashboard';
 import Admin from './pages/Admin';
+import Membership from './pages/Membership';
 import './App.css';
 
 function PrivateRoute({ children }) {
@@ -53,6 +54,9 @@ export default function App() {
                     } />
                     <Route path="/admin" element={
                         <AdminRoute><Layout><Admin /></Layout></AdminRoute>
+                    } />
+                    <Route path="/membership" element={
+                        <PrivateRoute><Layout><Membership /></Layout></PrivateRoute>
                     } />
                 </Routes>
             </BrowserRouter>

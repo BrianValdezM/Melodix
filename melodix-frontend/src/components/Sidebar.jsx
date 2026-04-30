@@ -20,6 +20,7 @@ export default function Sidebar() {
                 <Link to="/favorites">❤️ Favoritos</Link>
                 <Link to="/playlists">📂 Playlists</Link>
                 <Link to="/artist">🎤 Mi espacio artista</Link>
+                <Link to="/membership">💎 Membresia</Link>
                 {isAdmin() && <Link to="/admin">🛡️ Administracion</Link>}
             </nav>
             <div style={{ marginTop: 'auto' }}>
